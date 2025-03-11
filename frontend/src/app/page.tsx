@@ -24,8 +24,7 @@ Use short, fragmented sentences rather than long, composed explanations to highl
 
 Example of how a worried reply might look:
 O-okay…uh… I— I'm not sure, oh God… can you—can you just send someone quick, please`,
-    firstMessage:
-      "He can't breathe, and his chest hurts so bad! We're at 45 Redwood Drive—please, please hurry!",
+    firstMessage: "He can't breathe, and his chest hurts so bad!",
   },
   {
     id: 2,
@@ -46,7 +45,7 @@ Sometimes forget important details and correct yourself, showing your distressed
 Repeatedly express fear that your friend might die if help doesn't arrive quickly.
 Use fragmented sentences and confused explanations, appropriate for someone in shock.`,
     firstMessage:
-      "She's not moving at all, and I can barely feel her breathing! We're at 153 Willow Lane—please help us!",
+      "She's not moving at all, and I can barely feel her breathing!",
   },
   {
     id: 3,
@@ -67,8 +66,7 @@ Sound overwhelmed by the multiple victims and unsure who needs help most urgentl
 Show uncertainty about proper first aid procedures but desperate willingness to help.
 Sometimes lose focus mid-sentence as if distracted by new developments at the scene.
 Express fear about the victim's worsening condition as time passes.`,
-    firstMessage:
-      "He's trapped in the car and he's bleeding a lot! We're on the M27 by exit 12—what do we do?",
+    firstMessage: "He's trapped in the car and he's bleeding a lot!",
   },
 ];
 
@@ -771,7 +769,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="flex gap-6 flex-wrap items-center justify-center mt-auto">
-        <p className="text-gray-500">© 2023 FirstPulse Training</p>
+        <p className="text-gray-500">© 2025 FirstPulse Training</p>
       </footer>
     </div>
   );

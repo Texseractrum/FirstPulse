@@ -5,8 +5,21 @@ export async function POST(request: NextRequest) {
     // Get the request body
     const body = await request.json();
 
+    // Get API URL from environment variable
+    const apiUrl = process.env.OUTBOUND_CALL_API_URL;
+    
+    if (!apiUrl) {
+      console.error('OUTBOUND_CALL_API_URL environment variable is not set');
+      return NextResponse.json(
+        { error: 'API URL configuration is missing' },
+        { status: 500 }
+      );
+    }
+
+    console.log(`Making API call to: ${apiUrl}`);
+
     // Forward the request to the actual API
-    const apiResponse = await fetch('https://a585-148-252-147-50.ngrok-free.app/outbound-call', {
+    const apiResponse = await fetch(`${apiUrl}/outbound-call`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

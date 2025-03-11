@@ -1,0 +1,42 @@
+{
+  "2": {
+    "scenario": "Sarah Johnson - Unconscious teenager",
+    "overall_rating": {
+      "score": 2,
+      "summary": "The responder demonstrated very poor handling of the situation, failing to engage effectively and gather critical information, which is crucial in a high-stakes emergency situation."
+    },
+    "strengths": [
+      "The responder attempted to engage with the caller initially."
+    ],
+    "areas_for_implementation": [
+      "Failure to effectively communicate and provide instructions to a panicked caller",
+      "Lack of promptness in response and guidance",
+      "Did not gather essential information about the victim's condition or the scene",
+      "Failed to provide any reassurance or control over the situation"
+    ],
+    "information_handling": {
+      "gathered_correctly": [],
+      "missed_or_incorrect": [
+        "Victim's exact condition (consciousness level, breathing quality)",
+        "Possible substances or medications involved",
+        "Duration of unconsciousness",
+        "Exact location and address verification"
+      ]
+    },
+    "action_assessment": {
+      "appropriate_actions": [],
+      "inappropriate_actions": [
+        "Did not instruct the caller to ensure the victim's airway was clear",
+        "Failed to instruct the caller to stop shaking the victim",
+        "No guidance provided to manage the chaotic environment or get assistance from others at the scene"
+      ]
+    },
+    "efficiency": {
+      "response_time_rating": 2,
+      "comments": "The responder was slow to respond and failed to take control of the situation, which is critical in emergency response."
+    },
+    "final_recommendation": "This trainee needs substantial improvement in handling emergency calls. They should undergo further training focused on effective communication under pressure, the ability to quickly gather critical information, and the skills required to provide precise instructions to untrained individuals in crisis situations. Regular simulation exercises that mimic high-stress environments will be beneficial for better preparation.",
+    "pass_fail": "FAIL",
+    "receivedAt": "2025-03-11T14:49:19.572Z"
+  }
+}
