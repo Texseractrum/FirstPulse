@@ -10,7 +10,7 @@ async function getStoredAnalyses() {
   try {
     const data = await fs.readFile(ANALYSIS_FILE, 'utf8');
     return JSON.parse(data);
-  } catch (error) {
+  } catch {
     // Return empty object if file doesn't exist or has invalid JSON
     return {};
   }

@@ -70,16 +70,42 @@ Express fear about the victim's worsening condition as time passes.`,
   },
 ];
 
+// First, add an interface for the analysis result structure
+interface AnalysisResult {
+  scenario: string;
+  overall_rating: {
+    score: number;
+    summary: string;
+  };
+  strengths: string[];
+  areas_for_improvement: string[];
+  information_handling: {
+    gathered_correctly: string[];
+    missed_or_incorrect: string[];
+  };
+  action_assessment: {
+    appropriate_actions: string[];
+    inappropriate_actions: string[];
+  };
+  efficiency: {
+    response_time_rating: number;
+    comments: string;
+  };
+  final_recommendation: string;
+  pass_fail: "PASS" | "FAIL";
+  scenarioId?: number;
+}
+
 export default function Home() {
   const [selectedScenario, setSelectedScenario] = useState<number | null>(null);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("+447341366667");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [showCorsHelp, setShowCorsHelp] = useState(false);
   const [scenarios, setScenarios] = useState(trainingScenarios);
   const [analysisResults, setAnalysisResults] = useState<{
-    [key: number]: any;
+    [key: number]: AnalysisResult;
   }>({});
   const [lastPollTime, setLastPollTime] = useState(Date.now());
 
@@ -432,7 +458,7 @@ export default function Home() {
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="+1 (123) 456-7890"
+              placeholder="+447341366667"
               className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
