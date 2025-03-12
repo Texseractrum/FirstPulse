@@ -542,7 +542,7 @@ DO NOT include any explanatory text, markdown formatting, or code blocks - retur
     
     // Send the analysis to the frontend endpoint
     try {
-      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000/api/analysis';
+      const frontendUrl = process.env.FRONTEND_URL || 'https://first-pulse-4xsp9cb9j-texseractrums-projects.vercel.app/api/analysis';
       
       console.log(`[Analysis] Sending analysis to frontend at: ${frontendUrl}`);
       

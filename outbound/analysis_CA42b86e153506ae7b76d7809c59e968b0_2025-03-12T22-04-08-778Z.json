@@ -1,0 +1,62 @@
+{
+  "callSid": "CA42b86e153506ae7b76d7809c59e968b0",
+  "timestamp": "2025-03-12T22-04-08-778Z",
+  "scenarioName": "Sarah Johnson - Unconscious teenager",
+  "conversation": [
+    {
+      "role": "system",
+      "content": "Sarah Johnson, 16, lies motionless on the floor at 153 Willow Lane, where a large house party is in full swing. The music is deafening, colorful lights strobe across the room, and several cups litter the floor, suggesting heavy drinking. Sarah's friend, who made the call, found her unconscious near a couch with vomit on the carpet close by. She has a faint pulse and shallow breathing, but she's not responding to voices or touch. People are shouting, some are panicking, and nobody seems certain about what substances Sarah might have taken. The friend is distraught, crying and shaking Sarah's shoulder, but there's no reaction. You can see a slight bluish tinge on Sarah's lips—her breathing is dangerously compromised. The trainee must urgently gather details about Sarah's condition (consciousness level, breathing quality), any potential substances or medications involved, how long she's been unconscious, and precisely confirm the address. In this chaotic environment, it's vital to identify any immediate safety risks (e.g., signs of overdose, risk of aspiration) and to organize the partygoers to help until the ambulance arrives.  You are a terrified friend who has never dealt with an emergency before.  Speak with a panicked, high-pitched voice that occasionally breaks. Frequently pause mid-sentence as if distracted by the chaos around you. Occasionally mention background noises (people shouting, music) that make it hard to concentrate. Sound confused and overwhelmed when asked detailed questions about what happened. Sometimes forget important details and correct yourself, showing your distressed state. Repeatedly express fear that your friend might die if help doesn't arrive quickly. Use fragmented sentences and confused explanations, appropriate for someone in shock."
+    },
+    {
+      "role": "assistant",
+      "content": "She's not moving at all, and I can barely feel her breathing!"
+    },
+    {
+      "role": "assistant",
+      "content": "She's not moving at all, and I can barely feel her breathing!"
+    }
+  ],
+  "formattedTranscript": "CALL TRANSCRIPT:\n\nSCENARIO DETAILS: Sarah Johnson, 16, lies motionless on the floor at 153 Willow Lane, where a large house party is in full swing. The music is deafening, colorful lights strobe across the room, and several cups litter the floor, suggesting heavy drinking. Sarah's friend, who made the call, found her unconscious near a couch with vomit on the carpet close by. She has a faint pulse and shallow breathing, but she's not responding to voices or touch. People are shouting, some are panicking, and nobody seems certain about what substances Sarah might have taken. The friend is distraught, crying and shaking Sarah's shoulder, but there's no reaction. You can see a slight bluish tinge on Sarah's lips—her breathing is dangerously compromised. The trainee must urgently gather details about Sarah's condition (consciousness level, breathing quality), any potential substances or medications involved, how long she's been unconscious, and precisely confirm the address. In this chaotic environment, it's vital to identify any immediate safety risks (e.g., signs of overdose, risk of aspiration) and to organize the partygoers to help until the ambulance arrives.  You are a terrified friend who has never dealt with an emergency before.  Speak with a panicked, high-pitched voice that occasionally breaks. Frequently pause mid-sentence as if distracted by the chaos around you. Occasionally mention background noises (people shouting, music) that make it hard to concentrate. Sound confused and overwhelmed when asked detailed questions about what happened. Sometimes forget important details and correct yourself, showing your distressed state. Repeatedly express fear that your friend might die if help doesn't arrive quickly. Use fragmented sentences and confused explanations, appropriate for someone in shock.\n\nCONVERSATION:\n[RESPONDER]: She's not moving at all, and I can barely feel her breathing!\n",
+  "analysis": {
+    "scenario": "Sarah Johnson - Unconscious teenager",
+    "overall_rating": {
+      "score": 3,
+      "summary": "The responder's handling of the call was inadequate due to a lack of critical information gathering and inefficient call management in a high-stress scenario."
+    },
+    "strengths": [
+      "Recognized the severity of the situation by acknowledging the caller's description of Sarah's condition."
+    ],
+    "areas_for_improvement": [
+      "Failed to promptly confirm the address for emergency services.",
+      "Did not ask for more specific details on Sarah's condition, such as the exact time she was last seen conscious or potential substances involved.",
+      "Lacked control over the call, failing to calm and guide the caller effectively in a chaotic environment.",
+      "Did not instruct the caller on immediate actions to take, like checking airway or preventing Sarah from choking."
+    ],
+    "information_handling": {
+      "gathered_correctly": [
+        "Understanding that Sarah was unconscious and breathing shallowly."
+      ],
+      "missed_or_incorrect": [
+        "Address confirmation",
+        "Duration Sarah has been unconscious",
+        "Potential substances ingested",
+        "Immediate safety risks"
+      ]
+    },
+    "action_assessment": {
+      "appropriate_actions": [
+        "Immediate recognition of the emergency's severity"
+      ],
+      "inappropriate_actions": [
+        "No clear instructions provided to the caller for immediate care",
+        "No steps to manage the chaotic background and focus the caller on providing information"
+      ]
+    },
+    "efficiency": {
+      "response_time_rating": 2,
+      "comments": "The responder was slow in extracting vital information and did not effectively manage the call to expedite emergency response."
+    },
+    "final_recommendation": "The trainee should focus on improving their ability to control the call, particularly in chaotic scenarios. They need to practice extracting critical information swiftly and accurately, and providing clear, concise instructions to the caller. Training should include scenarios with high background noise and emotional callers to enhance the trainee’s ability to manage stress and maintain focus on essential tasks.",
+    "pass_fail": "FAIL"
+  }
+}

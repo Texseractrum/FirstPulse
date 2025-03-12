@@ -540,256 +540,262 @@ export default function Home() {
           999 Responder Training Scenarios
         </h2>
         <div className="flex flex-col md:flex-row gap-4 relative">
-          {scenarios.map((scenario, index) => (
-            <React.Fragment key={scenario.id}>
-              {/* Scenario Box */}
-              <div className="flex-1 relative">
-                <div
-                  className={`bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer transition-all duration-200 hover:shadow-lg relative ${
-                    selectedScenario === scenario.id
-                      ? "ring-2 ring-blue-500"
-                      : ""
-                  }`}
-                  onClick={() => handleScenarioClick(scenario.id)}
-                >
-                  {/* Step Number */}
-                  <div className="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mb-4">
-                    {index + 1}
-                  </div>
-
-                  {/* Status Badge */}
-                  <div
-                    className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs text-white font-medium ${getStatusColor(
-                      scenario.status
-                    )}`}
-                  >
-                    {scenario.status}
-                  </div>
-
-                  <h3 className="text-xl font-semibold mb-2">
-                    {scenario.name}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {scenario.description}
-                  </p>
-                  <div className="mt-4 flex justify-end">
-                    <span className="text-blue-600 text-sm">
-                      {selectedScenario === scenario.id
-                        ? "Hide Results"
-                        : "View Results"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Results panel that appears for all selected scenarios with detail for passed/failed */}
-                {selectedScenario === scenario.id && (
-                  <div className="bg-blue-50 dark:bg-gray-700 p-4 rounded-b-lg mt-1 shadow-md">
-                    <h4 className="font-semibold mb-2">
-                      Current Status:{" "}
-                      <span className="text-blue-600">{scenario.status}</span>
-                    </h4>
-
-                    {scenario.status === "in call" && (
-                      <div className="p-3 bg-yellow-100 rounded my-2">
-                        <p className="font-medium">Call in progress...</p>
-                        <p>
-                          The system is waiting for the call to complete and be
-                          analyzed. This status will update automatically when
-                          finished.
-                        </p>
+          {Array.isArray(scenarios)
+            ? scenarios.map((scenario, index) => (
+                <React.Fragment key={scenario.id}>
+                  {/* Scenario Box */}
+                  <div className="flex-1 relative">
+                    <div
+                      className={`bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md cursor-pointer transition-all duration-200 hover:shadow-lg relative ${
+                        selectedScenario === scenario.id
+                          ? "ring-2 ring-blue-500"
+                          : ""
+                      }`}
+                      onClick={() => handleScenarioClick(scenario.id)}
+                    >
+                      {/* Step Number */}
+                      <div className="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mb-4">
+                        {index + 1}
                       </div>
-                    )}
 
-                    {(scenario.status === "passed" ||
-                      scenario.status === "failed") && (
-                      <>
-                        <p>{scenario.results}</p>
+                      {/* Status Badge */}
+                      <div
+                        className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs text-white font-medium ${getStatusColor(
+                          scenario.status
+                        )}`}
+                      >
+                        {scenario.status}
+                      </div>
 
-                        {/* Show detailed analysis if available */}
-                        {analysisResults[scenario.id] && (
-                          <div className="mt-4">
-                            <h5 className="font-semibold mb-2">
-                              Detailed Analysis:
-                            </h5>
+                      <h3 className="text-xl font-semibold mb-2">
+                        {scenario.name}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {scenario.description}
+                      </p>
+                      <div className="mt-4 flex justify-end">
+                        <span className="text-blue-600 text-sm">
+                          {selectedScenario === scenario.id
+                            ? "Hide Results"
+                            : "View Results"}
+                        </span>
+                      </div>
+                    </div>
 
-                            {/* Overall Rating */}
-                            <div className="mb-3">
-                              <p className="font-medium">
-                                Overall Rating:{" "}
-                                {
-                                  analysisResults[scenario.id].overall_rating
-                                    .score
-                                }
-                                /10
-                              </p>
-                              <p>
-                                {
-                                  analysisResults[scenario.id].overall_rating
-                                    .summary
-                                }
-                              </p>
-                            </div>
+                    {/* Results panel that appears for all selected scenarios with detail for passed/failed */}
+                    {selectedScenario === scenario.id && (
+                      <div className="bg-blue-50 dark:bg-gray-700 p-4 rounded-b-lg mt-1 shadow-md">
+                        <h4 className="font-semibold mb-2">
+                          Current Status:{" "}
+                          <span className="text-blue-600">
+                            {scenario.status}
+                          </span>
+                        </h4>
 
-                            {/* Strengths */}
-                            <div className="mb-3">
-                              <p className="font-medium">Key Strengths:</p>
-                              <ul className="list-disc pl-5 mt-1">
-                                {analysisResults[scenario.id].strengths.map(
-                                  (strength: string, i: number) => (
-                                    <li key={i}>{strength}</li>
-                                  )
-                                )}
-                              </ul>
-                            </div>
-
-                            {/* Areas for Improvement */}
-                            <div className="mb-3">
-                              <p className="font-medium">
-                                Areas for Improvement:
-                              </p>
-                              <ul className="list-disc pl-5 mt-1">
-                                {analysisResults[
-                                  scenario.id
-                                ].areas_for_improvement.map(
-                                  (area: string, i: number) => (
-                                    <li key={i}>{area}</li>
-                                  )
-                                )}
-                              </ul>
-                            </div>
-
-                            {/* Information Handling */}
-                            <div className="mb-3">
-                              <p className="font-medium">
-                                Information Handling:
-                              </p>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
-                                <div>
-                                  <p className="text-green-600 font-medium">
-                                    Gathered Correctly:
-                                  </p>
-                                  <ul className="list-disc pl-5">
-                                    {analysisResults[
-                                      scenario.id
-                                    ].information_handling.gathered_correctly.map(
-                                      (info: string, i: number) => (
-                                        <li key={i}>{info}</li>
-                                      )
-                                    )}
-                                  </ul>
-                                </div>
-                                <div>
-                                  <p className="text-red-600 font-medium">
-                                    Missed or Incorrect:
-                                  </p>
-                                  <ul className="list-disc pl-5">
-                                    {analysisResults[
-                                      scenario.id
-                                    ].information_handling.missed_or_incorrect.map(
-                                      (info: string, i: number) => (
-                                        <li key={i}>{info}</li>
-                                      )
-                                    )}
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Action Assessment */}
-                            <div className="mb-3">
-                              <p className="font-medium">Action Assessment:</p>
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
-                                <div>
-                                  <p className="text-green-600 font-medium">
-                                    Appropriate Actions:
-                                  </p>
-                                  <ul className="list-disc pl-5">
-                                    {analysisResults[
-                                      scenario.id
-                                    ].action_assessment.appropriate_actions.map(
-                                      (action: string, i: number) => (
-                                        <li key={i}>{action}</li>
-                                      )
-                                    )}
-                                  </ul>
-                                </div>
-                                <div>
-                                  <p className="text-red-600 font-medium">
-                                    Inappropriate Actions:
-                                  </p>
-                                  <ul className="list-disc pl-5">
-                                    {analysisResults[
-                                      scenario.id
-                                    ].action_assessment.inappropriate_actions.map(
-                                      (action: string, i: number) => (
-                                        <li key={i}>{action}</li>
-                                      )
-                                    )}
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Efficiency */}
-                            <div className="mb-3">
-                              <p className="font-medium">
-                                Response Efficiency:{" "}
-                                {
-                                  analysisResults[scenario.id].efficiency
-                                    .response_time_rating
-                                }
-                                /10
-                              </p>
-                              <p>
-                                {
-                                  analysisResults[scenario.id].efficiency
-                                    .comments
-                                }
-                              </p>
-                            </div>
-
-                            {/* Final Recommendation */}
-                            <div className="mt-4 p-3 bg-gray-100 dark:bg-gray-600 rounded-md">
-                              <p className="font-medium">
-                                Final Recommendation:
-                              </p>
-                              <p>
-                                {
-                                  analysisResults[scenario.id]
-                                    .final_recommendation
-                                }
-                              </p>
-                              <p className="mt-2 font-bold text-lg">
-                                Status:
-                                <span
-                                  className={
-                                    analysisResults[scenario.id].pass_fail ===
-                                    "PASS"
-                                      ? "text-green-600"
-                                      : "text-red-600"
-                                  }
-                                >
-                                  {" "}
-                                  {analysisResults[scenario.id].pass_fail}
-                                </span>
-                              </p>
-                            </div>
+                        {scenario.status === "in call" && (
+                          <div className="p-3 bg-yellow-100 rounded my-2">
+                            <p className="font-medium">Call in progress...</p>
+                            <p>
+                              The system is waiting for the call to complete and
+                              be analyzed. This status will update automatically
+                              when finished.
+                            </p>
                           </div>
                         )}
-                      </>
+
+                        {(scenario.status === "passed" ||
+                          scenario.status === "failed") && (
+                          <>
+                            <p>{scenario.results}</p>
+
+                            {/* Show detailed analysis if available */}
+                            {analysisResults[scenario.id] && (
+                              <div className="mt-4">
+                                <h5 className="font-semibold mb-2">
+                                  Detailed Analysis:
+                                </h5>
+
+                                {/* Overall Rating */}
+                                <div className="mb-3">
+                                  <p className="font-medium">
+                                    Overall Rating:{" "}
+                                    {
+                                      analysisResults[scenario.id]
+                                        .overall_rating.score
+                                    }
+                                    /10
+                                  </p>
+                                  <p>
+                                    {
+                                      analysisResults[scenario.id]
+                                        .overall_rating.summary
+                                    }
+                                  </p>
+                                </div>
+
+                                {/* Strengths */}
+                                <div className="mb-3">
+                                  <p className="font-medium">Key Strengths:</p>
+                                  <ul className="list-disc pl-5 mt-1">
+                                    {analysisResults[scenario.id].strengths.map(
+                                      (strength: string, i: number) => (
+                                        <li key={i}>{strength}</li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+
+                                {/* Areas for Improvement */}
+                                <div className="mb-3">
+                                  <p className="font-medium">
+                                    Areas for Improvement:
+                                  </p>
+                                  <ul className="list-disc pl-5 mt-1">
+                                    {analysisResults[
+                                      scenario.id
+                                    ].areas_for_improvement.map(
+                                      (area: string, i: number) => (
+                                        <li key={i}>{area}</li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+
+                                {/* Information Handling */}
+                                <div className="mb-3">
+                                  <p className="font-medium">
+                                    Information Handling:
+                                  </p>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
+                                    <div>
+                                      <p className="text-green-600 font-medium">
+                                        Gathered Correctly:
+                                      </p>
+                                      <ul className="list-disc pl-5">
+                                        {analysisResults[
+                                          scenario.id
+                                        ].information_handling.gathered_correctly.map(
+                                          (info: string, i: number) => (
+                                            <li key={i}>{info}</li>
+                                          )
+                                        )}
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <p className="text-red-600 font-medium">
+                                        Missed or Incorrect:
+                                      </p>
+                                      <ul className="list-disc pl-5">
+                                        {analysisResults[
+                                          scenario.id
+                                        ].information_handling.missed_or_incorrect.map(
+                                          (info: string, i: number) => (
+                                            <li key={i}>{info}</li>
+                                          )
+                                        )}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {/* Action Assessment */}
+                                <div className="mb-3">
+                                  <p className="font-medium">
+                                    Action Assessment:
+                                  </p>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
+                                    <div>
+                                      <p className="text-green-600 font-medium">
+                                        Appropriate Actions:
+                                      </p>
+                                      <ul className="list-disc pl-5">
+                                        {analysisResults[
+                                          scenario.id
+                                        ].action_assessment.appropriate_actions.map(
+                                          (action: string, i: number) => (
+                                            <li key={i}>{action}</li>
+                                          )
+                                        )}
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <p className="text-red-600 font-medium">
+                                        Inappropriate Actions:
+                                      </p>
+                                      <ul className="list-disc pl-5">
+                                        {analysisResults[
+                                          scenario.id
+                                        ].action_assessment.inappropriate_actions.map(
+                                          (action: string, i: number) => (
+                                            <li key={i}>{action}</li>
+                                          )
+                                        )}
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {/* Efficiency */}
+                                <div className="mb-3">
+                                  <p className="font-medium">
+                                    Response Efficiency:{" "}
+                                    {
+                                      analysisResults[scenario.id].efficiency
+                                        .response_time_rating
+                                    }
+                                    /10
+                                  </p>
+                                  <p>
+                                    {
+                                      analysisResults[scenario.id].efficiency
+                                        .comments
+                                    }
+                                  </p>
+                                </div>
+
+                                {/* Final Recommendation */}
+                                <div className="mt-4 p-3 bg-gray-100 dark:bg-gray-600 rounded-md">
+                                  <p className="font-medium">
+                                    Final Recommendation:
+                                  </p>
+                                  <p>
+                                    {
+                                      analysisResults[scenario.id]
+                                        .final_recommendation
+                                    }
+                                  </p>
+                                  <p className="mt-2 font-bold text-lg">
+                                    Status:
+                                    <span
+                                      className={
+                                        analysisResults[scenario.id]
+                                          .pass_fail === "PASS"
+                                          ? "text-green-600"
+                                          : "text-red-600"
+                                      }
+                                    >
+                                      {" "}
+                                      {analysisResults[scenario.id].pass_fail}
+                                    </span>
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+                          </>
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
 
-              {/* Connector Line (except after the last item) */}
-              {index < scenarios.length - 1 && (
-                <div className="hidden md:block w-8 self-center">
-                  <div className="h-0.5 bg-blue-600 w-full mt-6"></div>
-                </div>
-              )}
-            </React.Fragment>
-          ))}
+                  {/* Connector Line (except after the last item) */}
+                  {index < scenarios.length - 1 && (
+                    <div className="hidden md:block w-8 self-center">
+                      <div className="h-0.5 bg-blue-600 w-full mt-6"></div>
+                    </div>
+                  )}
+                </React.Fragment>
+              ))
+            : null}
         </div>
       </section>
 
